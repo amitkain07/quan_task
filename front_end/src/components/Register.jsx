@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { FaUser, FaLock, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDoB] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
+
   const handleFormData = async (e) => {
     e.preventDefault();
     try {
@@ -21,6 +24,7 @@ const Register = () => {
       setEmail("");
       setDoB("");
       setPassword("");
+      navigate('/login')
 
       console.log("User registered:", response.data); 
     } catch (error) {
